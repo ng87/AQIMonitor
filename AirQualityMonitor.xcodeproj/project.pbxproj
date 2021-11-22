@@ -17,7 +17,7 @@
 		1879190727495453000727E1 /* AirQualityMonitorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879190627495453000727E1 /* AirQualityMonitorUITests.swift */; };
 		1879190927495453000727E1 /* AirQualityMonitorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879190827495453000727E1 /* AirQualityMonitorUITestsLaunchTests.swift */; };
 		18C11ADC274AC08300C99D33 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C11ADB274AC08300C99D33 /* DataService.swift */; };
-		18C11ADE274ACC7200C99D33 /* AQIDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C11ADD274ACC7200C99D33 /* AQIDataModel.swift */; };
+		18C11ADE274ACC7200C99D33 /* AQIDataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C11ADD274ACC7200C99D33 /* AQIDataModels.swift */; };
 		18C11AE7274AEB8600C99D33 /* CityAQIDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C11AE5274AEB8600C99D33 /* CityAQIDataTableViewCell.swift */; };
 		18C11AE8274AEB8600C99D33 /* CityAQIDataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C11AE6274AEB8600C99D33 /* CityAQIDataTableViewCell.xib */; };
 		18C11AEC274AED4A00C99D33 /* AQIDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C11AEB274AED4A00C99D33 /* AQIDataViewModel.swift */; };
@@ -70,7 +70,7 @@
 		1879190627495453000727E1 /* AirQualityMonitorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQualityMonitorUITests.swift; sourceTree = "<group>"; };
 		1879190827495453000727E1 /* AirQualityMonitorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQualityMonitorUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		18C11ADB274AC08300C99D33 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
-		18C11ADD274ACC7200C99D33 /* AQIDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIDataModel.swift; sourceTree = "<group>"; };
+		18C11ADD274ACC7200C99D33 /* AQIDataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIDataModels.swift; sourceTree = "<group>"; };
 		18C11AE5274AEB8600C99D33 /* CityAQIDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityAQIDataTableViewCell.swift; sourceTree = "<group>"; };
 		18C11AE6274AEB8600C99D33 /* CityAQIDataTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityAQIDataTableViewCell.xib; sourceTree = "<group>"; };
 		18C11AEB274AED4A00C99D33 /* AQIDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIDataViewModel.swift; sourceTree = "<group>"; };
@@ -121,6 +121,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		187804A7274C27550055BDE7 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				187918F027495453000727E1 /* LaunchScreen.storyboard */,
+				187918EB27495451000727E1 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		187918D927495451000727E1 = {
 			isa = PBXGroup;
 			children = (
@@ -149,10 +158,8 @@
 				18C11ADF274AE49500C99D33 /* AppDelegate */,
 				18C11AE3274AE4DE00C99D33 /* Utilities */,
 				18C11AEA274AED2800C99D33 /* Code */,
-				187918E727495451000727E1 /* SceneDelegate.swift */,
-				187918EB27495451000727E1 /* Main.storyboard */,
+				187804A7274C27550055BDE7 /* Storyboards */,
 				187918EE27495453000727E1 /* Assets.xcassets */,
-				187918F027495453000727E1 /* LaunchScreen.storyboard */,
 				187918F327495453000727E1 /* Info.plist */,
 			);
 			path = AirQualityMonitor;
@@ -179,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				187918E527495451000727E1 /* AppDelegate.swift */,
+				187918E727495451000727E1 /* SceneDelegate.swift */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -186,7 +194,7 @@
 		18C11AE0274AE4A300C99D33 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				18C11ADD274ACC7200C99D33 /* AQIDataModel.swift */,
+				18C11ADD274ACC7200C99D33 /* AQIDataModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -529,7 +537,7 @@
 			files = (
 				18C11B0A274B28A400C99D33 /* MLBarChartView.swift in Sources */,
 				18C11AE7274AEB8600C99D33 /* CityAQIDataTableViewCell.swift in Sources */,
-				18C11ADE274ACC7200C99D33 /* AQIDataModel.swift in Sources */,
+				18C11ADE274ACC7200C99D33 /* AQIDataModels.swift in Sources */,
 				18C11AEC274AED4A00C99D33 /* AQIDataViewModel.swift in Sources */,
 				18C11B04274B0AF100C99D33 /* AQIInfoTableViewCell.swift in Sources */,
 				187918EA27495451000727E1 /* CityWiseAQIViewController.swift in Sources */,

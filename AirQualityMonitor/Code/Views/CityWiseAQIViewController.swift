@@ -19,17 +19,48 @@ class CityWiseAQIViewController: UIViewController {
         self.setupViewModel()
     }
     
+    // Initialises View model and set up bindings
     func setupViewModel(){
         self.viewModel = AQIDataViewModel()
-        self.viewModel.refreshUI = {
-            self.tableView.reloadData()
+        self.viewModel.refreshUI = { [weak self] in
+            self?.tableView.reloadData()
         }
-        self.viewModel.showLoading = {
-            self.activityIndicator.startAnimating()
+        self.viewModel.showLoading = { [weak self] in
+            self?.activityIndicator.startAnimating()
         }
-        self.viewModel.hideLoading = {
-            self.activityIndicator.stopAnimating()
+        self.viewModel.hideLoading = { [weak self] in
+            self?.activityIndicator.stopAnimating()
         }
+        self.viewModel.showError = { [weak self] error in
+            self?.handle(error)
+        }
+    }
+    
+    func handle(_ error: Error) {
+        let alert = UIAlertController(
+            title: "An error occured",
+            message: error.localizedDescription,
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "Dismiss",
+                                      style: .default ))
+        alert.addAction(UIAlertAction(title: "Retry",
+                                      style: .default,
+                                      handler: { [weak self]  _ in
+            self?.viewModel.reconnect()
+        }))
+        self.present(alert, animated: true)
+    }
+    
+    // Navigates to AQI Info for a city
+    func handleNavigation(for index: Int){
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: CityAQIInfoViewController.identifier) as? CityAQIInfoViewController else{
+            return
+        }
+        vc.viewModel = self.viewModel
+        vc.city = self.viewModel.city(for: index)
+        vc.modalPresentationStyle = .overFullScreen
+        self.present(vc, animated: true, completion: nil)
     }
 }
 
@@ -46,7 +77,7 @@ extension CityWiseAQIViewController: UITableViewDelegate, UITableViewDataSource{
         tableView.dataSource = self
         tableView.delegate = self
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.viewModel.dataCount
     }
@@ -65,11 +96,7 @@ extension CityWiseAQIViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc: CityAQIInfoViewController =  self.storyboard?.instantiateViewController(withIdentifier: "CityAQIInfoViewController") as! CityAQIInfoViewController
-        vc.viewModel = self.viewModel
-        vc.city = self.viewModel.city(for: indexPath.row)
-        vc.modalPresentationStyle = .overFullScreen
-        self.present(vc, animated: true, completion: nil)
+        self.handleNavigation(for: indexPath.row)
     }
 }
 

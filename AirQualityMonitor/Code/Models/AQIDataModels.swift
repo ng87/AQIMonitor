@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// MARK: ENUM for Air Quality Categorisation
 enum AQICategory: String{
     case good = "Good"
     case satisfactory = "Satisfactory"
@@ -78,9 +79,12 @@ enum AQICategory: String{
     }
 }
 
+// MARK: AQI Data Model
 struct AQIDataModel: Codable, Hashable{
+    // API data
     let city: String
     let aqi: Double
+    // Computed data
     let timeStamp: Date
     var cityDescription: String{
         return "Air quality in \(city) is currently"
@@ -147,6 +151,7 @@ struct AQIDataModel: Codable, Hashable{
     }
 }
 
+// MARK: Data model for chart entries
 class ChartEntriesDataModel{
     let xValue: String
     let yValue: Double

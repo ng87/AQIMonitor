@@ -12,7 +12,7 @@ class MLBarChartView: UIView {
     
     @IBOutlet var chartView: BarChartView!
     var dataPoints: [ChartEntriesDataModel] = []
-    let maxVisibleBars: Int = 8
+    let maxVisibleBars: Double = 6.5
     
     class func loadFromNibNamed(nibNamed: String, bundle : Bundle? = nil) -> UIView? {
         return UINib(
@@ -24,6 +24,7 @@ class MLBarChartView: UIView {
     func configureChart(using data: [ChartEntriesDataModel]){
         self.dataPoints = data
         
+        // Configure chart
         chartView.clear()
         chartView.clearValues()
         chartView.leftAxis.removeAllLimitLines()
@@ -53,14 +54,15 @@ class MLBarChartView: UIView {
         xAxis.labelCount = dataPoints.count
         xAxis.valueFormatter = self
         xAxis.granularityEnabled = true
-        xAxis.labelRotationAngle = data.count < maxVisibleBars ? 0: 30
+        xAxis.labelRotationAngle = data.count < Int(maxVisibleBars) ? 0: 30
         
+        // Creates data for chart
         var dataEntries: [BarChartDataEntry] = []
         for i in 0 ..< dataPoints.count {
             let dataEntry = BarChartDataEntry(x: Double(i), y: dataPoints[i].yValue)
             dataEntries.append(dataEntry)
         }
-        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "data.legendText")
+        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "AQI US")
         chartDataSet.colors = data.map({$0.color})
         let chartData = BarChartData(dataSets: [chartDataSet])
         chartData.setValueTextColor(.black)

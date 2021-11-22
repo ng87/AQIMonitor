@@ -7,10 +7,9 @@
 
 import Foundation
 
-typealias VoidCompletionHandler = (() -> Void)
-
 class AQIDataViewModel: NSObject{
-    
+    typealias VoidCompletionHandler = (() -> Void)
+    typealias ErrorCompletionHandler = ((Error) -> Void)
     private var service: DataService!
     private var cityWiseMap: [String: [AQIDataModel]]  = [:]{
         didSet{
@@ -23,18 +22,21 @@ class AQIDataViewModel: NSObject{
     var dataCount: Int{
         return self.cityWiseMap.keys.count
     }
+    // View Bindings
     var refreshUI: VoidCompletionHandler?
-    var showError: VoidCompletionHandler?
+    var showError: ErrorCompletionHandler?
     var showLoading: VoidCompletionHandler?
     var hideLoading: VoidCompletionHandler?
     
+    // Initialises View Model
     override init() {
         super.init()
         self.service =  DataService()
-        self.getCityWiseData()
+        self.subscribeForCityWiseData()
     }
     
-    func getCityWiseData(){
+    // subsribes to get data from WS
+    func subscribeForCityWiseData(){
         self.showLoading?()
         self.service.initialise {[weak self] aqiData, error in
             self?.createCityWiseMap(from: aqiData)
@@ -42,13 +44,21 @@ class AQIDataViewModel: NSObject{
         }
     }
     
+    // handles error from WS connection
     func handleError(_ error: Error?) {
         guard let error = error else {
             return
         }
+        self.showError?(error)
         Console.log("websocket encountered an error: \(error.localizedDescription)")
     }
     
+    // handles reconnection to WS
+    func reconnect(){
+        self.service.reconnect()
+    }
+    
+    // Creates city wise map of data from aqi array
     func createCityWiseMap(from aqiData: [AQIDataModel]){
         guard !aqiData.isEmpty else{
             return
@@ -78,6 +88,7 @@ class AQIDataViewModel: NSObject{
         return self.allCities[index]
     }
     
+    // Returns AQI data array for a given city
     func getData(for city: String) -> [AQIDataModel]{
         guard let data = self.cityWiseMap[city] else{
             return []
@@ -85,6 +96,7 @@ class AQIDataViewModel: NSObject{
         return data
     }
     
+    // Returns latest AQI data for a given city
     func getLatestData(for city: String) -> AQIDataModel?{
         let data = self.getData(for: city)
         guard !data.isEmpty else{

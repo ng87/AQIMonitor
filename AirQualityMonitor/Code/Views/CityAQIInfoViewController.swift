@@ -8,7 +8,7 @@
 import UIKit
 
 class CityAQIInfoViewController: UIViewController {
-    
+    static let identifier: String = "CityAQIInfoViewController"
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -24,6 +24,7 @@ class CityAQIInfoViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(refresh(_:)), for: UIControl.Event.valueChanged)
         return refreshControl
     }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configure(tableView: self.tableView)
@@ -48,6 +49,10 @@ class CityAQIInfoViewController: UIViewController {
     
     @IBAction func dismissTapped(_ sender: Any){
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func refreshTapped(_ sender: Any){
+        self.refresh(sender)
     }
 }
 
