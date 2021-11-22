@@ -30,7 +30,7 @@ iOS 14.0 or later
 3. Open `AirQualityMonitor.xcworkspace` file in XCODE and run the app.
 
 ## App Architecture
-MVVM is used in the project. 
+`MVVM` is used in the project. 
 
 1. Service: DataService
 2. Models: AQIDataModel, ChartEntriesDataModel
@@ -38,9 +38,15 @@ MVVM is used in the project.
 4. Views: CityAQIDataTableViewCell, AQIInfoTableViewCell, AQITrackingTableViewCell, MLBarChartView
 5. ViewControllers: CityWiseAQIViewController, CityAQIInfoViewController
 
+## App Logic
+1. `DataService` initialises web socket and subscribes to it's events. Starscream is used for WS.
+2. `AQIDataViewModel` fetches data from service and transforms data as a map of City and AQI data array.
+3. `CityWiseAQIViewController` shows latest AQI data for each city. Tapping on city shows AQI details for that particluar city.
+4. `CityAQIInfoViewController` can be refreshed either using `pull to refresh` or  `resfresh button` to get latest data for that city.
+
 ## Third Party Libraries used
-1. Starscream:  https://github.com/daltoniam/Starscream
-2. Charts: https://github.com/danielgindi/Charts
+1. `Starscream`:  https://github.com/daltoniam/Starscream
+2. `Charts`: https://github.com/danielgindi/Charts
 
 ## App Screen Shots
 ![Launch](https://user-images.githubusercontent.com/94808806/142928042-9abddad4-6906-4d58-ad71-d0d5ed461ecc.png)
