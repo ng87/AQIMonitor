@@ -98,6 +98,12 @@ struct AQIDataModel: Codable, Hashable{
         formatter.unitsStyle = .full
         return "last updated: "+formatter.localizedString(for: timeStamp, relativeTo: Date())
     }
+    var formattedDate: String{
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        formatter.dateStyle = .medium
+        return formatter.string(from: timeStamp)
+    }
     var formattedTime: String{
         let formatter = DateFormatter()
         formatter.timeStyle = .medium

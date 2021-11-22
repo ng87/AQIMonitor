@@ -9,16 +9,14 @@ import UIKit
 
 class AQITrackingTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var graphView: UIView!
     @IBOutlet weak var containerView: UIView?
     var data:[AQIDataModel] = []
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
-        self.containerView?.addViewShadow()
-       
-        self.configureGraph()
+        self.containerView?.addViewShadow()       
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -40,6 +38,7 @@ class AQITrackingTableViewCell: UITableViewCell {
     func configureCell(city: String, data: [AQIDataModel]){
         self.data = data.reversed()
         self.titleLabel.text = "Air Quality Data for \(city)"
+        self.infoLabel.text = "Air pollution will vary slightly throughout the day, getting better in the afternoon and then getting worse towards night."
         graphView.subviews.forEach({$0.removeFromSuperview()})
         if let chartView:MLBarChartView = MLBarChartView.loadFromNibNamed(nibNamed: "MLBarChartView") as? MLBarChartView{
             graphView.backgroundColor = .clear
@@ -49,11 +48,6 @@ class AQITrackingTableViewCell: UITableViewCell {
             chartView.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin, .flexibleWidth]
             graphView.addSubview(chartView)
         }
-    }
-    
-    func configureGraph(){
-        
-
     }
     
 }

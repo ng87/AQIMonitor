@@ -12,6 +12,7 @@ class MLBarChartView: UIView {
     
     @IBOutlet var chartView: BarChartView!
     var dataPoints: [ChartEntriesDataModel] = []
+    let maxVisibleBars: Int = 8
     
     class func loadFromNibNamed(nibNamed: String, bundle : Bundle? = nil) -> UIView? {
         return UINib(
@@ -23,21 +24,36 @@ class MLBarChartView: UIView {
     func configureChart(using data: [ChartEntriesDataModel]){
         self.dataPoints = data
         
-        chartView.isHidden = false
         chartView.clear()
         chartView.clearValues()
         chartView.leftAxis.removeAllLimitLines()
-        chartView.doubleTapToZoomEnabled = true
-        chartView.highlightPerTapEnabled = true
-        chartView.highlightPerDragEnabled = false
-        chartView.pinchZoomEnabled = true
-        chartView.setScaleEnabled(true)
+        
         chartView.legend.enabled = false
         chartView.chartDescription?.enabled = false
         chartView.rightAxis.enabled = false
         chartView.drawBordersEnabled = false
         chartView.drawGridBackgroundEnabled = false
+        
+        chartView.doubleTapToZoomEnabled = true
+        chartView.highlightPerTapEnabled = true
+        chartView.highlightPerDragEnabled = false
+        chartView.pinchZoomEnabled = true
+        chartView.setScaleEnabled(true)
+       
         chartView.backgroundColor = .clear
+        
+        let yAxis = chartView.leftAxis
+        yAxis.labelFont = UIFont(name: "Avenir-Book", size: 10.0)!
+        yAxis.labelCount = dataPoints.count
+        yAxis.labelPosition = .outsideChart
+        
+        let xAxis = chartView.xAxis
+        xAxis.labelPosition = .bottom
+        xAxis.labelFont = UIFont(name: "Avenir-Book", size: 10.0)!
+        xAxis.labelCount = dataPoints.count
+        xAxis.valueFormatter = self
+        xAxis.granularityEnabled = true
+        xAxis.labelRotationAngle = data.count < maxVisibleBars ? 0: 30
         
         var dataEntries: [BarChartDataEntry] = []
         for i in 0 ..< dataPoints.count {
@@ -48,21 +64,9 @@ class MLBarChartView: UIView {
         chartDataSet.colors = data.map({$0.color})
         let chartData = BarChartData(dataSets: [chartDataSet])
         chartData.setValueTextColor(.black)
+        chartData.setValueFont(UIFont(name: "Avenir-Heavy", size: 10.0)!)
         chartView.data = chartData
-        chartView.setVisibleXRangeMaximum(6)
-        
-        let yAxis = chartView.leftAxis
-        yAxis.labelFont = UIFont(name: "Avenir-Book", size: 12.0)!
-        yAxis.labelCount = dataPoints.count
-        yAxis.labelPosition = .outsideChart
-        
-        let xAxis = chartView.xAxis
-        xAxis.labelPosition = .bottom
-        xAxis.labelFont = UIFont(name: "Avenir-Book", size: 10.0)!
-        xAxis.labelCount = dataPoints.count
-        xAxis.valueFormatter = self
-        xAxis.axisMinimum = 0
-        xAxis.wordWrapEnabled = true
+        chartView.setVisibleXRangeMaximum(Double(maxVisibleBars))
         
         chartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.0, easingOption: .easeInCubic)
     }

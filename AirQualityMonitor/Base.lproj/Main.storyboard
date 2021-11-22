@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -25,7 +26,7 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="qht-Br-pTi"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Air Quality Monitor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ghc-oc-jRe">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Air Quality Monitor" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ghc-oc-jRe">
                                 <rect key="frame" x="16" y="60" width="382" height="44"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="32"/>
                                 <color key="textColor" name="AccentColor"/>
@@ -68,7 +69,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="If6-hu-WNy">
-                                <rect key="frame" x="0.0" y="64" width="414" height="832"/>
+                                <rect key="frame" x="0.0" y="124.5" width="414" height="771.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="HS9-Oe-Jox" id="9ki-k8-CTF"/>
@@ -76,32 +77,76 @@
                                 </connections>
                             </tableView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Jzk-gS-2Ec">
-                                <rect key="frame" x="188.5" y="461.5" width="37" height="37"/>
+                                <rect key="frame" x="188.5" y="492" width="37" height="37"/>
                                 <color key="color" name="AccentColor"/>
                             </activityIndicatorView>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="zJe-rR-Yb9">
+                                <rect key="frame" x="16" y="60" width="382" height="48.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="pqT-1Z-B4q">
+                                        <rect key="frame" x="0.0" y="0.0" width="342" height="48.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Air Quality Monitor" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2m-eC-jHh">
+                                                <rect key="frame" x="0.0" y="0.0" width="342" height="25"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
+                                                <color key="textColor" name="AccentColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Air Quality Monitor" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPx-uZ-J1e">
+                                                <rect key="frame" x="0.0" y="29" width="342" height="19.5"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                                <color key="textColor" name="AccentColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOt-th-CrF">
+                                        <rect key="frame" x="342" y="0.0" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="LbN-TU-Nz3"/>
+                                            <constraint firstAttribute="height" constant="40" id="qF6-S9-RqE"/>
+                                        </constraints>
+                                        <color key="tintColor" name="AccentColor"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal">
+                                            <imageReference key="image" image="chevron.down" catalog="system" symbolScale="large"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="medium"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="dismissTapped:" destination="HS9-Oe-Jox" eventType="touchUpInside" id="pQz-Gp-skc"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZeR-Th-2em"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="If6-hu-WNy" firstAttribute="top" secondItem="zJe-rR-Yb9" secondAttribute="bottom" constant="16" id="1Tp-92-2bn"/>
                             <constraint firstItem="Jzk-gS-2Ec" firstAttribute="centerY" secondItem="If6-hu-WNy" secondAttribute="centerY" id="FMJ-eL-M4b"/>
+                            <constraint firstItem="zJe-rR-Yb9" firstAttribute="top" secondItem="ZeR-Th-2em" secondAttribute="top" constant="16" id="I4F-LP-7Qa"/>
                             <constraint firstItem="If6-hu-WNy" firstAttribute="leading" secondItem="ZeR-Th-2em" secondAttribute="leading" id="IJj-cg-gcF"/>
-                            <constraint firstItem="If6-hu-WNy" firstAttribute="top" secondItem="ZeR-Th-2em" secondAttribute="top" constant="20" id="O1k-JJ-QAh"/>
                             <constraint firstItem="Jzk-gS-2Ec" firstAttribute="centerX" secondItem="If6-hu-WNy" secondAttribute="centerX" id="RKc-6S-Dp7"/>
                             <constraint firstItem="If6-hu-WNy" firstAttribute="trailing" secondItem="ZeR-Th-2em" secondAttribute="trailing" id="d8C-PO-Zpr"/>
+                            <constraint firstItem="ZeR-Th-2em" firstAttribute="trailing" secondItem="zJe-rR-Yb9" secondAttribute="trailing" constant="16" id="kcu-WY-W1F"/>
                             <constraint firstItem="ZeR-Th-2em" firstAttribute="bottom" secondItem="If6-hu-WNy" secondAttribute="bottom" constant="-34" id="sLg-O1-3R9"/>
+                            <constraint firstItem="zJe-rR-Yb9" firstAttribute="leading" secondItem="oIg-wd-aOC" secondAttribute="leading" constant="16" id="xrN-Rn-rl7"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="Jzk-gS-2Ec" id="VO0-m3-Khe"/>
+                        <outlet property="cityLabel" destination="n2m-eC-jHh" id="1fq-xG-PWz"/>
+                        <outlet property="dateLabel" destination="uPx-uZ-J1e" id="fjO-B5-Xsd"/>
                         <outlet property="tableView" destination="If6-hu-WNy" id="cG1-ti-Bc1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sWj-gi-pGv" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="832" y="98"/>
+            <point key="canvasLocation" x="831.88405797101461" y="97.767857142857139"/>
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.down" catalog="system" width="128" height="72"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

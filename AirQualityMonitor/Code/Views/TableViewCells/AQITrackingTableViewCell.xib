@@ -69,6 +69,7 @@
             <connections>
                 <outlet property="containerView" destination="qyv-da-WRT" id="Oy8-ev-3eK"/>
                 <outlet property="graphView" destination="x01-Se-ydX" id="Zqo-9O-KXt"/>
+                <outlet property="infoLabel" destination="aK8-fF-F1m" id="imH-GM-VUQ"/>
                 <outlet property="titleLabel" destination="T94-UU-2SW" id="0u9-cD-tsL"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="79.6875"/>

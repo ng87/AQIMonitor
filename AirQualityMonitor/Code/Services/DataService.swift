@@ -35,6 +35,11 @@ class DataService{
                 let data = Data(string.utf8)
                 do {
                     let aqiData = try JSONDecoder().decode([AQIDataModel].self, from: data)
+//                    self.webSocket?.disconnect()
+//                    Timer.scheduledTimer(withTimeInterval: 30.0, repeats: false) { timer in
+//                        self.webSocket?.connect()
+//                        timer.invalidate()
+//                    }
                     updateHandler(aqiData, nil)
                 } catch let newError {
                     Console.log("\(newError)")

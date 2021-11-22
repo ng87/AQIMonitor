@@ -68,6 +68,7 @@ extension CityWiseAQIViewController: UITableViewDelegate, UITableViewDataSource{
         let vc: CityAQIInfoViewController =  self.storyboard?.instantiateViewController(withIdentifier: "CityAQIInfoViewController") as! CityAQIInfoViewController
         vc.viewModel = self.viewModel
         vc.city = self.viewModel.city(for: indexPath.row)
+        vc.modalPresentationStyle = .overFullScreen
         self.present(vc, animated: true, completion: nil)
     }
 }

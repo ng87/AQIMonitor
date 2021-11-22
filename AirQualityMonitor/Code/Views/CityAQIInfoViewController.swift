@@ -10,19 +10,51 @@ import UIKit
 class CityAQIInfoViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    var viewModel: AQIDataViewModel?
     var city: String = ""
-    
+    var viewModel: AQIDataViewModel?
+    var aqiData: AQIDataModel?{
+        return viewModel?.getLatestData(for: city)
+    }
+   
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh(_:)), for: UIControl.Event.valueChanged)
+        return refreshControl
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configure(tableView: self.tableView)
+        self.setupHeader()
+    }
+    
+    func setupHeader(){
+        self.cityLabel.text = ""
+        self.dateLabel.text = ""
+        guard let aqiData = aqiData else {
+            return
+        }
+        self.cityLabel.text = "Air Quality: "+aqiData.city
+        self.dateLabel.text = "As on: "+aqiData.formattedDate
+    }
+    
+    @objc func refresh(_ sender: Any) {
+        self.setupHeader()
+        self.tableView.reloadData()
+        self.refreshControl.endRefreshing()
+    }
+    
+    @IBAction func dismissTapped(_ sender: Any){
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
 //MARK:- Table View Delegate and Data Source Methods
 extension CityAQIInfoViewController: UITableViewDelegate, UITableViewDataSource{
     internal func configure(tableView: UITableView) {
+        tableView.addSubview(self.refreshControl)
         tableView.registerReusableCell(AQIInfoTableViewCell.self)
         tableView.registerReusableCell(AQITrackingTableViewCell.self)
         tableView.showsVerticalScrollIndicator = false
@@ -51,7 +83,7 @@ extension CityAQIInfoViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0{
             let cell = AQIInfoTableViewCell.dequeueCell(from: tableView, at: indexPath)
-            if let data = viewModel?.getLatestData(for: city){
+            if let data = self.aqiData{
                 cell.configureCell(model: data)
             }
             return cell

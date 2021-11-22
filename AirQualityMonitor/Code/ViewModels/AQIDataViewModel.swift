@@ -11,9 +11,13 @@ typealias VoidCompletionHandler = (() -> Void)
 
 class AQIDataViewModel: NSObject{
     
-    private var  service: DataService!
-    var cityWiseMap: [String: [AQIDataModel]]  = [:]
-    var allCities: [String]{
+    private var service: DataService!
+    private var cityWiseMap: [String: [AQIDataModel]]  = [:]{
+        didSet{
+            self.refreshUI?()
+        }
+    }
+    private var allCities: [String]{
         return self.cityWiseMap.keys.sorted(by: {$0 < $1})
     }
     var dataCount: Int{
@@ -68,8 +72,6 @@ class AQIDataViewModel: NSObject{
                 self.cityWiseMap[city] = data
             }
         }
-        
-        self.refreshUI?()
     }
     
     func city(for index: Int)-> String{
@@ -90,11 +92,5 @@ class AQIDataViewModel: NSObject{
         }
         return data.first
     }
-    
-//    func data(for index: Int)-> AQIDataModel?{
-//        let city = self.city(for: index)
-//        return self .getLatestData(for: city)
-//    }
-    
-    
+
 }
