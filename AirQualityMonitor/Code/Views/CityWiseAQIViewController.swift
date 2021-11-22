@@ -11,7 +11,7 @@ class CityWiseAQIViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    let viewModel: AQIDataViewModel = AQIDataViewModel()
+    private var viewModel: AQIDataViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,19 +20,20 @@ class CityWiseAQIViewController: UIViewController {
     }
     
     func setupViewModel(){
-        viewModel.refreshUI = {
+        self.viewModel = AQIDataViewModel()
+        self.viewModel.refreshUI = {
             self.tableView.reloadData()
         }
-        viewModel.showLoading = {
+        self.viewModel.showLoading = {
             self.activityIndicator.startAnimating()
         }
-        viewModel.hideLoading = {
+        self.viewModel.hideLoading = {
             self.activityIndicator.stopAnimating()
         }
-        viewModel.getCityWiseData()
     }
 }
 
+//MARK:- Table View Delegate and Data Source Methods
 extension CityWiseAQIViewController: UITableViewDelegate, UITableViewDataSource{
     internal func configure(tableView: UITableView) {
         tableView.registerReusableCell(CityAQIDataTableViewCell.self)
@@ -41,14 +42,11 @@ extension CityWiseAQIViewController: UITableViewDelegate, UITableViewDataSource{
         tableView.separatorStyle = .none
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 300.0
-        tableView.contentInset.bottom = 30.0
+        tableView.contentInset.bottom = 60.0
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.reloadData()
     }
-    
-    //MARK:- Table View Delegate and Data Source Methods
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.viewModel.dataCount
     }
@@ -59,15 +57,18 @@ extension CityWiseAQIViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = CityAQIDataTableViewCell.dequeue(from: tableView, at: indexPath)
-        if let data = self.viewModel.data(for: indexPath.row){
+        let city = self.viewModel.city(for: indexPath.row)
+        if let data = self.viewModel.getLatestData(for: city){
             cell.configureCell(model: data)
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        
+        let vc: CityAQIInfoViewController =  self.storyboard?.instantiateViewController(withIdentifier: "CityAQIInfoViewController") as! CityAQIInfoViewController
+        vc.viewModel = self.viewModel
+        vc.city = self.viewModel.city(for: indexPath.row)
+        self.present(vc, animated: true, completion: nil)
     }
 }
 

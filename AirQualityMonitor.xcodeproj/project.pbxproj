@@ -24,6 +24,13 @@
 		18C11AF3274AEDFC00C99D33 /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C11AF2274AEDFC00C99D33 /* UITableView+Reusable.swift */; };
 		18C11AFA274AF25200C99D33 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C11AF9274AF25200C99D33 /* UIViewExtension.swift */; };
 		18C11AFD274B057200C99D33 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C11AFC274B057200C99D33 /* Utility.swift */; };
+		18C11B00274B0ACC00C99D33 /* AQITrackingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C11AFE274B0ACC00C99D33 /* AQITrackingTableViewCell.swift */; };
+		18C11B01274B0ACC00C99D33 /* AQITrackingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C11AFF274B0ACC00C99D33 /* AQITrackingTableViewCell.xib */; };
+		18C11B04274B0AF100C99D33 /* AQIInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C11B02274B0AF100C99D33 /* AQIInfoTableViewCell.swift */; };
+		18C11B05274B0AF100C99D33 /* AQIInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C11B03274B0AF100C99D33 /* AQIInfoTableViewCell.xib */; };
+		18C11B07274B14DF00C99D33 /* CityAQIInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C11B06274B14DF00C99D33 /* CityAQIInfoViewController.swift */; };
+		18C11B0A274B28A400C99D33 /* MLBarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C11B08274B28A400C99D33 /* MLBarChartView.swift */; };
+		18C11B0B274B28A400C99D33 /* MLBarChartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C11B09274B28A400C99D33 /* MLBarChartView.xib */; };
 		29E9A5AA2790ED1432A7C9C8 /* Pods_AirQualityMonitor_AirQualityMonitorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A4DF5EAACA341FF6E0F0017 /* Pods_AirQualityMonitor_AirQualityMonitorUITests.framework */; };
 		49D149EE487BF963FA13CFBB /* Pods_AirQualityMonitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3DC6DE8DF7303CCFFD5BB8B /* Pods_AirQualityMonitor.framework */; };
 		C5B3FA26F4F788B74E2F7334 /* Pods_AirQualityMonitorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84EACECC46AA1C71BA797C2C /* Pods_AirQualityMonitorTests.framework */; };
@@ -70,6 +77,13 @@
 		18C11AF2274AEDFC00C99D33 /* UITableView+Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
 		18C11AF9274AF25200C99D33 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		18C11AFC274B057200C99D33 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		18C11AFE274B0ACC00C99D33 /* AQITrackingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQITrackingTableViewCell.swift; sourceTree = "<group>"; };
+		18C11AFF274B0ACC00C99D33 /* AQITrackingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AQITrackingTableViewCell.xib; sourceTree = "<group>"; };
+		18C11B02274B0AF100C99D33 /* AQIInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIInfoTableViewCell.swift; sourceTree = "<group>"; };
+		18C11B03274B0AF100C99D33 /* AQIInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AQIInfoTableViewCell.xib; sourceTree = "<group>"; };
+		18C11B06274B14DF00C99D33 /* CityAQIInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityAQIInfoViewController.swift; sourceTree = "<group>"; };
+		18C11B08274B28A400C99D33 /* MLBarChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLBarChartView.swift; sourceTree = "<group>"; };
+		18C11B09274B28A400C99D33 /* MLBarChartView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MLBarChartView.xib; sourceTree = "<group>"; };
 		79C4381C7B309476284BAA10 /* Pods-AirQualityMonitor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirQualityMonitor.debug.xcconfig"; path = "Target Support Files/Pods-AirQualityMonitor/Pods-AirQualityMonitor.debug.xcconfig"; sourceTree = "<group>"; };
 		8117040361CD3704D4E14B3F /* Pods-AirQualityMonitorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirQualityMonitorTests.debug.xcconfig"; path = "Target Support Files/Pods-AirQualityMonitorTests/Pods-AirQualityMonitorTests.debug.xcconfig"; sourceTree = "<group>"; };
 		846EA0D28C389715B9BB052C /* Pods-AirQualityMonitor-AirQualityMonitorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirQualityMonitor-AirQualityMonitorUITests.release.xcconfig"; path = "Target Support Files/Pods-AirQualityMonitor-AirQualityMonitorUITests/Pods-AirQualityMonitor-AirQualityMonitorUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -189,7 +203,9 @@
 			isa = PBXGroup;
 			children = (
 				187918E927495451000727E1 /* CityWiseAQIViewController.swift */,
-				18C11AFB274B055000C99D33 /* TableView Cell */,
+				18C11B06274B14DF00C99D33 /* CityAQIInfoViewController.swift */,
+				18C11B0C274B2F4D00C99D33 /* ChartView */,
+				18C11AFB274B055000C99D33 /* TableViewCells */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -223,13 +239,26 @@
 			path = Code;
 			sourceTree = "<group>";
 		};
-		18C11AFB274B055000C99D33 /* TableView Cell */ = {
+		18C11AFB274B055000C99D33 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
 				18C11AE5274AEB8600C99D33 /* CityAQIDataTableViewCell.swift */,
 				18C11AE6274AEB8600C99D33 /* CityAQIDataTableViewCell.xib */,
+				18C11B02274B0AF100C99D33 /* AQIInfoTableViewCell.swift */,
+				18C11B03274B0AF100C99D33 /* AQIInfoTableViewCell.xib */,
+				18C11AFE274B0ACC00C99D33 /* AQITrackingTableViewCell.swift */,
+				18C11AFF274B0ACC00C99D33 /* AQITrackingTableViewCell.xib */,
 			);
-			path = "TableView Cell";
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		18C11B0C274B2F4D00C99D33 /* ChartView */ = {
+			isa = PBXGroup;
+			children = (
+				18C11B08274B28A400C99D33 /* MLBarChartView.swift */,
+				18C11B09274B28A400C99D33 /* MLBarChartView.xib */,
+			);
+			path = ChartView;
 			sourceTree = "<group>";
 		};
 		BD8CA9DD734DA4C6F42D6D9C /* Frameworks */ = {
@@ -366,7 +395,10 @@
 			files = (
 				187918F227495453000727E1 /* LaunchScreen.storyboard in Resources */,
 				187918EF27495453000727E1 /* Assets.xcassets in Resources */,
+				18C11B01274B0ACC00C99D33 /* AQITrackingTableViewCell.xib in Resources */,
+				18C11B05274B0AF100C99D33 /* AQIInfoTableViewCell.xib in Resources */,
 				18C11AE8274AEB8600C99D33 /* CityAQIDataTableViewCell.xib in Resources */,
+				18C11B0B274B28A400C99D33 /* MLBarChartView.xib in Resources */,
 				187918ED27495451000727E1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -495,13 +527,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18C11B0A274B28A400C99D33 /* MLBarChartView.swift in Sources */,
 				18C11AE7274AEB8600C99D33 /* CityAQIDataTableViewCell.swift in Sources */,
 				18C11ADE274ACC7200C99D33 /* AQIDataModel.swift in Sources */,
 				18C11AEC274AED4A00C99D33 /* AQIDataViewModel.swift in Sources */,
+				18C11B04274B0AF100C99D33 /* AQIInfoTableViewCell.swift in Sources */,
 				187918EA27495451000727E1 /* CityWiseAQIViewController.swift in Sources */,
 				187918E627495451000727E1 /* AppDelegate.swift in Sources */,
 				18C11AF3274AEDFC00C99D33 /* UITableView+Reusable.swift in Sources */,
+				18C11B07274B14DF00C99D33 /* CityAQIInfoViewController.swift in Sources */,
 				18C11AFD274B057200C99D33 /* Utility.swift in Sources */,
+				18C11B00274B0ACC00C99D33 /* AQITrackingTableViewCell.swift in Sources */,
 				18C11AFA274AF25200C99D33 /* UIViewExtension.swift in Sources */,
 				187918E827495451000727E1 /* SceneDelegate.swift in Sources */,
 				18C11ADC274AC08300C99D33 /* DataService.swift in Sources */,

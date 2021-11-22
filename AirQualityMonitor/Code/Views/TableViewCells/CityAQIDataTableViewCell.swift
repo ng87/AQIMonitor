@@ -9,16 +9,18 @@ import UIKit
 
 class CityAQIDataTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var cityLabel: UILabel!
-    @IBOutlet weak var aqiLabel: UILabel!
-    @IBOutlet weak var aqiDescriptionLabel: UILabel!
-    @IBOutlet weak var lastUpdatedLabel: UILabel!
+    @IBOutlet weak var containerView: UIView?
+    @IBOutlet weak var cityLabel: UILabel?
+    @IBOutlet weak var aqiContainerView: UIView?
+    @IBOutlet weak var aqiLabel: UILabel?
+    @IBOutlet weak var aqiDescriptionLabel: UILabel?
+    @IBOutlet weak var lastUpdatedLabel: UILabel?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
-        self.containerView.addViewShadow()
+        self.containerView?.addViewShadow()
+        self.aqiContainerView?.addViewShadow()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -31,18 +33,18 @@ class CityAQIDataTableViewCell: UITableViewCell {
     
     internal static func dequeue(from tableView: UITableView, at indexPath: IndexPath) -> CityAQIDataTableViewCell {
         guard let cell: CityAQIDataTableViewCell = tableView.dequeueReusableCell(indexPath: indexPath) else {
-            fatalError("*** Failed to dequeue HomeMessagesTableViewCell ***")
+            fatalError("*** Failed to dequeue CityAQIDataTableViewCell ***")
         }
         cell.tag = indexPath.row
         return cell
     }
     
     func configureCell(model: AQIDataModel){
-        self.cityLabel.text = model.city
-        self.aqiLabel.text = model.formattedAQI
-        self.aqiDescriptionLabel.text = model.category.description
-        self.aqiLabel.backgroundColor = model.category.color
-        self.lastUpdatedLabel.text = model.formattedTimeStamp
+        self.cityLabel?.text = model.city
+        self.aqiLabel?.text = model.formattedAQI
+        self.aqiDescriptionLabel?.text = model.category.description
+        self.aqiContainerView?.backgroundColor = model.category.color
+        self.lastUpdatedLabel?.text = model.formattedTimeStamp
         
     }
     

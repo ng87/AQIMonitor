@@ -1,20 +1,22 @@
 PODS:
-  - ScrollableGraphView (4.0.6)
+  - Charts (3.6.0):
+    - Charts/Core (= 3.6.0)
+  - Charts/Core (3.6.0)
   - Starscream (4.0.4)
 
 DEPENDENCIES:
-  - ScrollableGraphView
+  - Charts
   - Starscream (~> 4.0.0)
 
 SPEC REPOS:
   trunk:
-    - ScrollableGraphView
+    - Charts
     - Starscream
 
 SPEC CHECKSUMS:
-  ScrollableGraphView: 4af35d4ea9ecdec665d34a74da51da161ddff8ac
+  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
 
-PODFILE CHECKSUM: faf7588dbff309f6daaefedf04ccde8e47d1fad6
+PODFILE CHECKSUM: b79d8f0a31a4b1f66387ed66a965525d3837a37c
 
 COCOAPODS: 1.11.2

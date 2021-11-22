@@ -9,20 +9,26 @@ import Foundation
 
 typealias VoidCompletionHandler = (() -> Void)
 
-class AQIDataViewModel{
+class AQIDataViewModel: NSObject{
     
-    let service: DataService = DataService()
+    private var  service: DataService!
     var cityWiseMap: [String: [AQIDataModel]]  = [:]
     var allCities: [String]{
         return self.cityWiseMap.keys.sorted(by: {$0 < $1})
     }
     var dataCount: Int{
-        return self.allCities.count
+        return self.cityWiseMap.keys.count
     }
     var refreshUI: VoidCompletionHandler?
     var showError: VoidCompletionHandler?
     var showLoading: VoidCompletionHandler?
     var hideLoading: VoidCompletionHandler?
+    
+    override init() {
+        super.init()
+        self.service =  DataService()
+        self.getCityWiseData()
+    }
     
     func getCityWiseData(){
         self.showLoading?()
@@ -66,15 +72,29 @@ class AQIDataViewModel{
         self.refreshUI?()
     }
     
+    func city(for index: Int)-> String{
+        return self.allCities[index]
+    }
+    
+    func getData(for city: String) -> [AQIDataModel]{
+        guard let data = self.cityWiseMap[city] else{
+            return []
+        }
+        return data
+    }
+    
     func getLatestData(for city: String) -> AQIDataModel?{
-        guard let data = self.cityWiseMap[city], !data.isEmpty else{
+        let data = self.getData(for: city)
+        guard !data.isEmpty else{
             return nil
         }
         return data.first
     }
     
-    func data(for index: Int)-> AQIDataModel?{
-        let city = self.allCities[index]
-        return self .getLatestData(for: city)
-    }
+//    func data(for index: Int)-> AQIDataModel?{
+//        let city = self.city(for: index)
+//        return self .getLatestData(for: city)
+//    }
+    
+    
 }

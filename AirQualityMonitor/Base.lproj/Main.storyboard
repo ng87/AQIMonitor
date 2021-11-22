@@ -12,7 +12,7 @@
         <!--City WiseAQI View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="CityWiseAQIViewController" customModule="AirQualityMonitor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CityWiseAQIViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="CityWiseAQIViewController" customModule="AirQualityMonitor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -58,6 +58,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="97.767857142857139"/>
+        </scene>
+        <!--CityAQI Info View Controller-->
+        <scene sceneID="pTo-Cq-DE6">
+            <objects>
+                <viewController storyboardIdentifier="CityAQIInfoViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HS9-Oe-Jox" customClass="CityAQIInfoViewController" customModule="AirQualityMonitor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oIg-wd-aOC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="If6-hu-WNy">
+                                <rect key="frame" x="0.0" y="64" width="414" height="832"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="HS9-Oe-Jox" id="9ki-k8-CTF"/>
+                                    <outlet property="delegate" destination="HS9-Oe-Jox" id="FL8-vd-RyB"/>
+                                </connections>
+                            </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Jzk-gS-2Ec">
+                                <rect key="frame" x="188.5" y="461.5" width="37" height="37"/>
+                                <color key="color" name="AccentColor"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ZeR-Th-2em"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Jzk-gS-2Ec" firstAttribute="centerY" secondItem="If6-hu-WNy" secondAttribute="centerY" id="FMJ-eL-M4b"/>
+                            <constraint firstItem="If6-hu-WNy" firstAttribute="leading" secondItem="ZeR-Th-2em" secondAttribute="leading" id="IJj-cg-gcF"/>
+                            <constraint firstItem="If6-hu-WNy" firstAttribute="top" secondItem="ZeR-Th-2em" secondAttribute="top" constant="20" id="O1k-JJ-QAh"/>
+                            <constraint firstItem="Jzk-gS-2Ec" firstAttribute="centerX" secondItem="If6-hu-WNy" secondAttribute="centerX" id="RKc-6S-Dp7"/>
+                            <constraint firstItem="If6-hu-WNy" firstAttribute="trailing" secondItem="ZeR-Th-2em" secondAttribute="trailing" id="d8C-PO-Zpr"/>
+                            <constraint firstItem="ZeR-Th-2em" firstAttribute="bottom" secondItem="If6-hu-WNy" secondAttribute="bottom" constant="-34" id="sLg-O1-3R9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="Jzk-gS-2Ec" id="VO0-m3-Khe"/>
+                        <outlet property="tableView" destination="If6-hu-WNy" id="cG1-ti-Bc1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sWj-gi-pGv" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="832" y="98"/>
         </scene>
     </scenes>
     <resources>

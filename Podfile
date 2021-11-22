@@ -7,7 +7,7 @@ target 'AirQualityMonitor' do
 
   # Pods for AirQualityMonitor
   pod 'Starscream', '~> 4.0.0'
-  pod 'ScrollableGraphView'
+  pod 'Charts'
 
   target 'AirQualityMonitorTests' do
     inherit! :search_paths
